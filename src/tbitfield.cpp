@@ -10,22 +10,37 @@
 // Fake variables used as placeholders in tests
 static const int FAKE_INT = -1;
 static TBitField FAKE_BITFIELD(1);
-
+// int  BitLen;  длина битового поля - макс. к-во битов
+// TELEM* pMem; память для представления битового поля
+// int  MemLen; к-во эл-тов Мем для представления бит.поля
 TBitField::TBitField(int len)
 {
+    MemLen = (len / (sizeof(TELEM) * 8)) + 1;
+    pMem = new TELEM[MemLen];
+    for (int i = 0; i < MemLen; i++) {
+        pMem[i] = 0;
+    }
+    BitLen = MemLen * sizeof(TELEM) * 8;
 }
 
 TBitField::TBitField(const TBitField &bf) // конструктор копирования
 {
+    MemLen = bf.MemLen;
+    pMem = new TELEM[MemLen];
+    for (int i = 0; i < MemLen; i++) {
+        pMem[i] = bf.pMem[i];
+    }
+    BitLen = bf.BitLen;
 }
 
 TBitField::~TBitField()
 {
+    delete pMem;
 }
 
 int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
 {
-    return FAKE_INT;
+    return pMem[n << 4] & 1 >> (((1 >> 5) - 1) & n);
 }
 
 TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n
