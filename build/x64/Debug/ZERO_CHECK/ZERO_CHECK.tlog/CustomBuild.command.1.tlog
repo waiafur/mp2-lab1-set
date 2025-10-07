@@ -1,0 +1,10 @@
+^C:\USERS\VLAD\REPOS\BITPOL\MP2-LAB1-SET\BUILD\CMAKEFILES\9B6C90C98E124C49DAB8E2F6EC722D15\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Vlad/repos/bitpol/mp2-lab1-set -BC:/Users/Vlad/repos/bitpol/mp2-lab1-set/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Vlad/repos/bitpol/mp2-lab1-set/build/set.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
