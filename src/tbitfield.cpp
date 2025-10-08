@@ -100,7 +100,7 @@ int TBitField::operator==(const TBitField &bf) const // сравнение
 
 int TBitField::operator!=(const TBitField &bf) const // сравнение
 {
-    if (MemLen != bf.MemLen) return 1;
+    if (BitLen != bf.BitLen) return 1;
     for (int i = 0; i < MemLen; i++) if (pMem[i] != bf.pMem[i]) return 1;
     return 0;
 }
@@ -134,10 +134,18 @@ TBitField TBitField::operator~(void) // отрицание
 
 istream &operator>>(istream &istr, TBitField &bf) // ввод
 {
+    int a;
+    for (int i = 0; i < bf.GetLength(); i++) {
+        std::cin >> a;
+        if (a) bf.SetBit(i);
+    }
     return istr;
 }
 
 ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 {
+    for (int i = 0; i < bf.GetLength(); i++) {
+        bf.GetBit(i);
+    }
     return ostr;
 }
