@@ -10,13 +10,4 @@ public:
 	void tick();
 };
 //0- red, 1-green, 2-yellow
-int Crypter(char a) {
-	switch (a) {
-	case 'r':
-		return 0;
-	case 'g':
-		return 1;
-	case 'y':
-		return 2;
-	}
-}
+int Crypter(char a);

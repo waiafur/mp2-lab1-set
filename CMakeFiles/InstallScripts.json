@@ -5,7 +5,8 @@
 		"C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/src/cmake_install.cmake",
 		"C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/samples/cmake_install.cmake",
 		"C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/gtest/cmake_install.cmake",
-		"C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/test/cmake_install.cmake"
+		"C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/test/cmake_install.cmake",
+		"C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/Light/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

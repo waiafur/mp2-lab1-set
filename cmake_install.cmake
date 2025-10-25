@@ -38,6 +38,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/samples/cmake_install.cmake")
   include("C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/gtest/cmake_install.cmake")
   include("C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/test/cmake_install.cmake")
+  include("C:/Users/Vlad/source/repos/bitfield/mp2-lab1-set/Light/cmake_install.cmake")
 
 endif()
 

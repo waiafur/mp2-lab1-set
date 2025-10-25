@@ -108,6 +108,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
+    <ProjectReference Include="C:\Users\Vlad\source\repos\bitfield\mp2-lab1-set\Light\LLight.vcxproj">
+      <Project>{DBD6FDDC-698E-3250-933F-73317F066EBA}</Project>
+      <Name>LLight</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\Users\Vlad\source\repos\bitfield\mp2-lab1-set\gtest\gtest.vcxproj">
       <Project>{BE88667E-1E41-30E4-834D-639C4FF6A5DE}</Project>
       <Name>gtest</Name>

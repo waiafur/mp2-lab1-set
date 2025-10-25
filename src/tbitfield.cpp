@@ -65,21 +65,21 @@ void TBitField::SetBit(const int n) // установить бит
 {
     if (n < 0) throw new exception("negative input");
     if (n > BitLen) throw new exception("out of tange input");
-    pMem[GetMemIndex(n)] = GetMemMask(n) | (1 << (n % BitSize));
+    pMem[GetMemIndex(n)] = GetMemMask(n) | (1 << (n & ((1<<LogSize)-1)));
 }
 
 void TBitField::ClrBit(const int n) // очистить бит
 {
     if (n < 0) throw new exception("negative input");
     if (n > BitLen) throw new exception("out of tange input");
-    pMem[n /sizeof(TELEM) / 8] = pMem[n/ sizeof(TELEM) / 8] & (~0 - (1 << (n % (8 * sizeof(TELEM)))));
+    pMem[GetMemIndex(n)] = GetMemMask(n) & (~0 - (1 << (n & ((1 << LogSize) - 1))));
 }
 
 int TBitField::GetBit(const int n) const // получить значение бита
 {
     if (n < 0) throw new exception("negative input");
     if (n > BitLen) throw new exception("out of tange input");
-    return (pMem[n / sizeof(TELEM) / 8] >> (n % (8 * sizeof(TELEM)))) & 1;
+    return (GetMemMask(n) >> (n & ((1 << LogSize) - 1))) & 1;
 }
 
 // битовые операции

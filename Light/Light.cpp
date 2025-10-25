@@ -10,7 +10,7 @@ char TLight::get(char place) {
 	}
 	else {
 		if (CarLights.IsMember(0)) return 'r';
-		else if (PedLights.IsMember(1)) return 'g';
+		else if (CarLights.IsMember(1)) return 'g';
 		else return 'y';
 	}
 	
@@ -20,4 +20,15 @@ void TLight::tick() {
 	if (CarLights.IsMember(0)) { CarLights.DelElem(0); CarLights.InsElem(1); PedLights.DelElem(1); PedLights.InsElem(0); }
 	else if (CarLights.IsMember(1)) { CarLights.DelElem(1); CarLights.InsElem(2); }
 	else if (CarLights.IsMember(2)) { CarLights.DelElem(2); CarLights.InsElem(0); PedLights.DelElem(0); PedLights.InsElem(1); }
+}
+
+int Crypter(char a) {
+	switch (a) {
+	case 'r':
+		return 0;
+	case 'g':
+		return 1;
+	case 'y':
+		return 2;
+	}
 }
