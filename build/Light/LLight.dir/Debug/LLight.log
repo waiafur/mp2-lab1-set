@@ -1,0 +1,2 @@
+﻿main.obj : error LNK2005: "int __cdecl Crypter(char)" (?Crypter@@YAHD@Z) уже определен в Light.obj
+C:\Users\Vlad\repos\bitpol\mp2-lab1-set\build\bin\LLight.exe : fatal error LNK1169: обнаружен многократно определенный символ - один или более

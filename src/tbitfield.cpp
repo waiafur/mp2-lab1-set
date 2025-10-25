@@ -6,6 +6,7 @@
 // Битовое поле
 
 #include "tbitfield.h"
+#include <cmath>
 
 // Fake variables used as placeholders in tests
 static const int FAKE_INT = -1;
@@ -16,7 +17,9 @@ static TBitField FAKE_BITFIELD(1);
 TBitField::TBitField(int len)
 {
     if (len <= 0) throw new exception;
-    MemLen = ((len+31)/32);
+    BitSize = sizeof(TELEM) * 8;
+    LogSize = log2(BitSize);
+    MemLen = ((len+BitSize-1)/BitSize);
     pMem = new TELEM[MemLen];
     for (int i = 0; i < MemLen; i++) {
         pMem[i] = TELEM(0);
@@ -26,6 +29,8 @@ TBitField::TBitField(int len)
 
 TBitField::TBitField(const TBitField &bf) // конструктор копирования
 {
+    BitSize = bf.BitSize;
+    LogSize = bf.LogSize;
     MemLen = bf.MemLen;
     pMem = new TELEM[MemLen];
     for (int i = 0; i < MemLen; i++) {
@@ -41,12 +46,12 @@ TBitField::~TBitField()
 
 int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
 {
-    return pMem[n >> sizeof(TELEM)] & (1 << ((1 << 5) - 1) & n);
+    return n >> LogSize;
 }
 
 TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n
 {
-    return pMem[n/32];
+    return pMem[GetMemIndex(n)];
 }
 
 // доступ к битам битового поля
@@ -60,21 +65,21 @@ void TBitField::SetBit(const int n) // установить бит
 {
     if (n < 0) throw new exception("negative input");
     if (n > BitLen) throw new exception("out of tange input");
-    pMem[n /32] = pMem[n/32] | (1 << (n % 32));
+    pMem[GetMemIndex(n)] = GetMemMask(n) | (1 << (n % BitSize));
 }
 
 void TBitField::ClrBit(const int n) // очистить бит
 {
     if (n < 0) throw new exception("negative input");
     if (n > BitLen) throw new exception("out of tange input");
-    pMem[n /32] = pMem[n/32] & (~0 - (1 << (n % 32)));
+    pMem[n /sizeof(TELEM) / 8] = pMem[n/ sizeof(TELEM) / 8] & (~0 - (1 << (n % (8 * sizeof(TELEM)))));
 }
 
 int TBitField::GetBit(const int n) const // получить значение бита
 {
     if (n < 0) throw new exception("negative input");
     if (n > BitLen) throw new exception("out of tange input");
-    return (pMem[n /32] >> (n % 32)) & 1;
+    return (pMem[n / sizeof(TELEM) / 8] >> (n % (8 * sizeof(TELEM)))) & 1;
 }
 
 // битовые операции

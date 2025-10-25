@@ -4,3 +4,4 @@ C:/Users/Vlad/repos/bitpol/mp2-lab1-set/build/src/CMakeFiles/set.dir
 C:/Users/Vlad/repos/bitpol/mp2-lab1-set/build/samples/CMakeFiles/sample_prime_numbers.dir
 C:/Users/Vlad/repos/bitpol/mp2-lab1-set/build/gtest/CMakeFiles/gtest.dir
 C:/Users/Vlad/repos/bitpol/mp2-lab1-set/build/test/CMakeFiles/test_set.dir
+C:/Users/Vlad/repos/bitpol/mp2-lab1-set/build/Light/CMakeFiles/LLight.dir
